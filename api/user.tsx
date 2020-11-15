@@ -92,7 +92,7 @@ const toDataURL = (url: string): Promise<string> => fetch(url)
     .then(response => response.blob())
     .then(blob => new Promise((resolve, reject) => {
       const reader = new FileReader()
-      reader.onloadend = () => resolve((reader.result as string).replace('application/octect-stream', 'image/png'))
+      reader.onloadend = () => resolve((reader.result as string).replace('application/octet-stream', 'image/png'))
       reader.onerror = reject
       reader.readAsDataURL(blob)
     }))
