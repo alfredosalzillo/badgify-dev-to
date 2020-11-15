@@ -61,15 +61,16 @@ const Username = ({ username }: UsernameProps) => (
 
 type UserBadgeProps = {
   user: User,
+  profileImage: string,
 }
-const User = ({ user }: UserBadgeProps) => (
+const User = ({ user, profileImage }: UserBadgeProps) => (
   <svg width="700" height="170" xmlns="http://www.w3.org/2000/svg">
     <g>
       <rect fill="#fff" strokeWidth="0" height="100%" width="100%" y="0" x="0"/>
     </g>
     <g>
       <image
-        href={user.profile_image}
+        href={profileImage}
         x="1"
         y="1"
         height="168"
@@ -87,6 +88,14 @@ const User = ({ user }: UserBadgeProps) => (
   </svg>
 )
 
+const toDataURL = (url: string): Promise<string> => fetch(url)
+    .then(response => response.blob())
+    .then(blob => new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onloadend = () => resolve((reader.result as string).replace('application/octect-stream', 'image/png'))
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+    }))
 export default async (req: ServerRequest) => {
   const url = new URL(req.url, 'http://localhost');
   const urlSearchParams = new URLSearchParams(url.search.slice(1));
@@ -100,10 +109,15 @@ export default async (req: ServerRequest) => {
     req.respond({ status: 404 })
     return;
   }
+  const image = await toDataURL(user.profile_image);
+  console.log(image)
   req.respond({
     headers: new Headers({
       'Content-Type': 'image/svg+xml'
     }),
-    body: ReactDOMServer.renderToStaticMarkup(<User user={user}/>),
+    body: ReactDOMServer.renderToStaticMarkup(<User
+      user={user}
+      profileImage={image}
+    />),
   });
 };
