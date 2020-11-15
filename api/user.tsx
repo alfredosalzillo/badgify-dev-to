@@ -65,6 +65,9 @@ type UserBadgeProps = {
 const User = ({ user }: UserBadgeProps) => (
   <svg width="700" height="170" xmlns="http://www.w3.org/2000/svg">
     <g>
+      <rect fill="#fff" strokeWidth="0" height="100%" width="100%" y="0" x="0"/>
+    </g>
+    <g>
       <image
         href={user.profile_image}
         x="1"
