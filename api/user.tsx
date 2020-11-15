@@ -1,4 +1,3 @@
-import type from 'https://deno.land/x/servest@v1.1.6/types/react/global.d.ts';
 import { ServerRequest } from 'https://deno.land/std@0.77.0/http/server.ts';
 // @deno-types="https://deno.land/x/servest@v1.1.6/types/react/index.d.ts"
 import React from 'https://dev.jspm.io/react@16.13.1'
@@ -110,7 +109,6 @@ export default async (req: ServerRequest) => {
     return;
   }
   const image = await toDataURL(user.profile_image);
-  console.log(image)
   req.respond({
     headers: new Headers({
       'Content-Type': 'image/svg+xml'
