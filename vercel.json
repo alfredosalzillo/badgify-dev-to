@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "public": true,
+  "github": {
+    "enabled": false
+  },
+  "functions": {
+    "api/**/*.[jt]sx": { "runtime": "vercel-deno@0.7.5" }
+  },
+  "rewrites": [
+    { "source": "/badges/user", "destination": "/api/user" }
+  ]
+}
