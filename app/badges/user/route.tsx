@@ -1,4 +1,4 @@
-import { type User, fetchUserByUsername } from "@/plugins/dev-to/users";
+import { fetchUserByUsername } from "@/plugins/dev-to/users";
 import { UserBadge } from "@/plugins/svg/UserBadge";
 import { type NextRequest, NextResponse } from "next/server";
 
@@ -13,6 +13,7 @@ const toDataURL = async (url: string): Promise<string> => {
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const username = searchParams.get("username");
+  const theme = searchParams.get("theme") === "dark" ? "dark" : "light";
 
   if (!username) {
     return new NextResponse("Username is required", { status: 404 });
@@ -27,7 +28,11 @@ export async function GET(request: NextRequest) {
     const image = await toDataURL(user.profile_image);
     const { renderToStaticMarkup } = await import("react-dom/server");
     const svg = renderToStaticMarkup(
-      <UserBadge user={user} profileImage={image} />,
+      <UserBadge
+        theme={theme}
+        user={user}
+        profileImage={image}
+      />,
     );
 
     return new NextResponse(svg, {
