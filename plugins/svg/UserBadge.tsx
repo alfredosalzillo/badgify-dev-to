@@ -1,4 +1,4 @@
-import { type User } from "@/plugins/dev-to/users";
+import type { User } from "@/plugins/dev-to/users";
 
 const DevLogo = () => (
   <svg y="120">
