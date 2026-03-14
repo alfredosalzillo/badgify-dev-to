@@ -12,24 +12,24 @@ You can customize the theme by adding the `theme` query parameter. Available opt
 #### Markdown
 ```markdown
 <!-- Replace {username} with your dev.to username -->
-[![Dev to profile {username}](https://badgify-dev-to.alfredosalzillo.vercel.app/badges/user?username={username}&theme=dark)](https://dev.to/{username})
+[![Dev to profile {username}](https://badgify-dev-to.vercel.app/badges/user?username={username}&theme=dark)](https://dev.to/{username})
 ```
 
 #### HTML
 ```html
 <!-- Replace {username} with your dev.to username -->
 <a href="https://dev.to/{username}">
-  <img alt="Dev to profile" src="https://badgify-dev-to.alfredosalzillo.vercel.app/badges/user?username={username}&theme=dark" />
+  <img alt="Dev to profile" src="https://badgify-dev-to.vercel.app/badges/user?username={username}&theme=dark" />
 </a>
 ```
 
 ### Examples
 
 #### Light Theme (default)
-[![Dev to profile alfredosalzillo](https://badgify-dev-to.alfredosalzillo.vercel.app/badges/user?username=alfredosalzillo)](https://dev.to/alfredosalzillo)
+[![Dev to profile alfredosalzillo](https://badgify-dev-to.vercel.app/badges/user?username=alfredosalzillo)](https://dev.to/alfredosalzillo)
 
 #### Dark Theme
-[![Dev to profile alfredosalzillo](https://badgify-dev-to.alfredosalzillo.vercel.app/badges/user?username=alfredosalzillo&theme=dark)](https://dev.to/alfredosalzillo)
+[![Dev to profile alfredosalzillo](https://badgify-dev-to.vercel.app/badges/user?username=alfredosalzillo&theme=dark)](https://dev.to/alfredosalzillo)
 
 ## Features
 -   🖼️ Dynamic profile image fetching.
