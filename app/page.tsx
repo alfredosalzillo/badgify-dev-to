@@ -18,8 +18,8 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [username, setUsername] = useState("ben");

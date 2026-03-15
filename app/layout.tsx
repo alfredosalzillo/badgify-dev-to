@@ -1,11 +1,11 @@
+import { Box } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import { Inter } from "next/font/google";
 import type { Metadata } from "next";
-import theme from "./theme";
+import { Inter } from "next/font/google";
 import Footer from "../components/Footer";
-import { Box } from "@mui/material";
+import theme from "./theme";
 
 const inter = Inter({
   subsets: ["latin"],
