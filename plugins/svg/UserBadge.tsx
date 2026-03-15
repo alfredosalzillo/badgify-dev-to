@@ -79,10 +79,15 @@ const Username = ({ username, theme = "light" }: UsernameProps) => (
 
 type UserBadgeProps = {
   user: User;
+  profileImage?: string;
   theme?: "light" | "dark";
 };
 
-export const UserBadge = ({ user, theme = "light" }: UserBadgeProps) => (
+export const UserBadge = ({
+  user,
+  profileImage,
+  theme = "light",
+}: UserBadgeProps) => (
   <svg width="700" height="170" xmlns="http://www.w3.org/2000/svg">
     <title>{`Dev.to Badge for ${user.username}`}</title>
     <g>
@@ -96,7 +101,13 @@ export const UserBadge = ({ user, theme = "light" }: UserBadgeProps) => (
       />
     </g>
     <g>
-      <image href={user.profile_image} x="1" y="1" height="168" width="168" />
+      <image
+        href={profileImage ?? user.profile_image}
+        x="1"
+        y="1"
+        height="168"
+        width="168"
+      />
       <svg x="180" fontFamily="sans-serif">
         <title>User Information</title>
         <Name name={user.name} theme={theme} />

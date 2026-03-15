@@ -1,5 +1,6 @@
 import { fetchUserByUsername } from "@/plugins/dev-to/users";
 import { UserBadge } from "@/plugins/svg/UserBadge";
+import { fetchImageAsBase64 } from "@/plugins/utils/images";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
@@ -16,9 +17,13 @@ export async function GET(request: NextRequest) {
     return new NextResponse("User not found", { status: 404 });
   }
 
+  const profileImageBase64 = await fetchImageAsBase64(user.profile_image);
+
   try {
     const { renderToStaticMarkup } = await import("react-dom/server");
-    const svg = renderToStaticMarkup(<UserBadge theme={theme} user={user} />);
+    const svg = renderToStaticMarkup(
+      <UserBadge theme={theme} user={user} profileImage={profileImageBase64} />,
+    );
 
     return new NextResponse(svg, {
       headers: {
